@@ -1,0 +1,55 @@
+import pandas as pd
+df = pd.read_csv('auto.csv')
+df = pd.read_csv('auto.csv',header=None)
+headers = ["symboling","normalized-losses","make","fuel-type","aspiration", "num-of-doors","body-style",
+         "drive-wheels","engine-location","wheel-base", "length","width","height","curb-weight","engine-type",
+         "num-of-cylinders", "engine-size","fuel-system","bore","stroke","compression-ratio","horsepower",
+         "peak-rpm","city-mpg","highway-mpg","price"]
+df.columns=headers
+df['symboling'].head(19)
+df['make'].head(10)
+df[['make','symboling']].head(10)
+
+# Numerical Calculation use numpy
+
+import numpy as np
+df.replace("?",np.nan,inplace=True)
+df.isnull()
+df.isnull().sum()
+df['normalized-losses'].head(25)
+m = df['normalized-losses'].astype('float').mean()
+df.isnull().sum()
+df['num-of-doors'].head(25)
+df['num-of-doors'].value_counts()
+df['num-of-doors'].value_counts().max()
+df['num-of-doors'].value_counts().min()
+mx = df['num-of-doors'].value_counts().idxmax()
+mn = df['num-of-doors'].value_counts().idxmin()
+df['num-of-doors'].replace(np.nan,mx,inplace=True)
+df['num-of-doors'].head(25)
+df.isnull().sum()
+df['bore'].head(25)
+df['bore'].isnull()
+df['bore'].isnull().sum()
+df['bore'].value_counts()
+m = df['bore'].astype('float').mean()
+df['bore'].replace(np.nan,m,inplace=True)
+df['bore'].head(25)
+df.isnull().sum()
+df['stroke'].isnull()
+df['stroke'].isnull().sum()
+m = df['stroke'].astype('float').mean()
+df['stroke'].replace(np.nan,m,inplace=True)
+df.isnull().sum()
+df['horsepower'].isnull().sum()
+m = df['horsepower'].astype('float').mean()
+df['horsepower'].replace(np.nan,m,inplace=True)
+df.isnull().sum()
+df['peak-rpm'].isnull().sum()
+m = df['peak-rpm'].astype('float').mean()
+df['peak-rpm'].replace(np.nan,m,inplace=True)
+df.isnull().sum()
+df['price'].isnull().sum()
+m = df['price'].astype('float').mean()
+df['price'].replace(np.nan,m,inplace=True)
+df.isnull().sum()
