@@ -6,4 +6,4 @@ plt.pyplot.hist(df['state'])
 
 #Task3
 
-plt.pyplot.hist(df['gender'])
+plt.pyplot.pie(dff['gender'].value_counts())
